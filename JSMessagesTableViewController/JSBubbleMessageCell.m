@@ -219,6 +219,11 @@
     self.avatarImageView.image = styledImg;
 }
 
+-(void)setTitle:(NSString *)title
+{
+    self.timestampLabel.text = title;
+}
+
 + (CGFloat)neededHeightForText:(NSString *)bubbleViewText timestamp:(BOOL)hasTimestamp avatar:(BOOL)hasAvatar
 {
     CGFloat timestampHeight = (hasTimestamp) ? TIMESTAMP_LABEL_HEIGHT : 0.0f;

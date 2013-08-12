@@ -195,16 +195,24 @@
     
     if(hasTimestamp)
         [cell setTimestamp:[self.dataSource timestampForRowAtIndexPath:indexPath]];
+
+    if ([self.dataSource respondsToSelector:@selector(titleForRowAtIndexPath:)])
+        [cell setTitle:[self.dataSource titleForRowAtIndexPath:indexPath]];
     
     if(hasAvatar) {
-        switch (type) {
-            case JSBubbleMessageTypeIncoming:
-                [cell setAvatarImage:[self.dataSource avatarImageForIncomingMessage]];
-                break;
-                
-            case JSBubbleMessageTypeOutgoing:
-                [cell setAvatarImage:[self.dataSource avatarImageForOutgoingMessage]];
-                break;
+        if ([self.dataSource respondsToSelector:@selector(avatarImageForMessageAtIndexPath:)]) {
+            [cell setAvatarImage:[self.dataSource avatarImageForMessageAtIndexPath:indexPath]];
+        }
+        else {
+            switch (type) {
+                case JSBubbleMessageTypeIncoming:
+                    [cell setAvatarImage:[self.dataSource avatarImageForIncomingMessage]];
+                    break;
+                    
+                case JSBubbleMessageTypeOutgoing:
+                    [cell setAvatarImage:[self.dataSource avatarImageForOutgoingMessage]];
+                    break;
+            }
         }
     }
     

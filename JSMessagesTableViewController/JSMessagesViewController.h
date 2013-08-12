@@ -77,6 +77,8 @@ typedef enum {
 - (NSDate *)timestampForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (UIImage *)avatarImageForIncomingMessage;
 - (UIImage *)avatarImageForOutgoingMessage;
+- (UIImage *)avatarImageForMessageAtIndexPath:(NSIndexPath *)indexPath;
+- (NSString *)titleForRowAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
 
